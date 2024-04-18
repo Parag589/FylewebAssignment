@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container cont">
+        <h1 style="margin-left: 40px;">Tax Calculator</h1>
+        <form   id="taxForm">
+            <div class="input-group">
+                <label  for="grossIncome">
+                    Enter gross annual income
+                    <span class="tooltip" info="Gross annual income is the total income earned in a year before deductions.">?</span>
+                </label>
+                <div style="display: flex; flex-direction:row; align-items: center;" >
+                    <div style="width: 100%;">
+                        <input placeholder="Enter gross annual income" class="inputField" id="grossIncome" required>
+                    </div>
+                    <div style="margin-left: -60px; display: none;" id="gross-income-div" class="tooltiptwo" info="Gross Income should be a number">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" id="mainIconPathAttribute" fill="#737373"></path> <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" id="mainIconPathAttribute" fill="#737373"></path> </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="extraIncome">
+                    Enter extra income
+                    <span  class="tooltip" info="Extra income is any additional income earned outside of the primary income source.">?</span>
+                </label>
+                <div style="display: flex; flex-direction:row; align-items: center;">
+                    <div style="width: 100%;">
+                        <input placeholder="Enter extra income from other sources" class="inputField" id="extraIncome" required>
+                    </div>
+                    <div style="margin-left: -60px; display: none;" id="extra-income-div" class="tooltiptwo" info="Extra Income should be a number">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" id="mainIconPathAttribute" fill="#737373"></path> <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" id="mainIconPathAttribute" fill="#737373"></path> </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="ageGroup">
+                    Enter age group
+                    <span class="tooltip" info="Age group is the range of ages the individual belongs to, which affects the tax calculation rate.">?</span>
+                </label>
+                <select class="inputField dropDown" id="ageGroup" required>
+                    <option value="<40">&lt;40</option>
+                    <option value="≥40 &amp; <60">&ge;40 &amp; &lt;60</option>
+                    <option value="≥60">&ge;60</option>
+                </select>
+                <span class="error" id="ageGroupError">!</span>
+            </div>
+            <div class="input-group">
+                <label for="deductions">
+                    Enter total applicable deductions
+                    <span class="tooltip" info="Total applicable deductions are the deductions that reduce the taxable income, such as deductions for investments, expenses, etc.">?</span>
+                </label>
+                <div style="display: flex; flex-direction:row; align-items: center;">
+                    <div style="width: 100%;">
+                        <input placeholder="Add total applicable deductions" class="inputField" id="deductions" required>
+                    </div>
+                    <div style="margin-left: -60px; display: none;" id="totaldeductions" class="tooltiptwo" info="Deductions should be a number">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" id="mainIconPathAttribute" fill="#737373"></path> <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" id="mainIconPathAttribute" fill="#737373"></path> </svg>
+                    </div>
+                </div>
+            </div>
+            <button class="button" type="button" id="calculateBtn">Calculate Tax</button>
+        </form>
+    </div>
+
+    <div id="taxResultContainer"></div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="taxResult"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
